@@ -9,6 +9,9 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "blogs")
@@ -22,10 +25,17 @@ public class Blog {
   private Long id;
 
   @Column(nullable = false)
-  private String title;
+  private String username;
 
   @Column(nullable = false)
+  private String title;
+
+  @Column(nullable = false, columnDefinition = "TEXT")
   private String content;
 
+  @Column(nullable = true)
   private String link;
+
+  @CreationTimestamp
+  private LocalDateTime createdAt;
 }
